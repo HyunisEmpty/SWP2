@@ -1,6 +1,8 @@
 from math import factorial as fact
-# from keypad import romans
+from keypad import romans
 
+
+# 팩토리얼 함수 구현
 def factorial(numStr):
     try:
         n = int(numStr)
@@ -9,25 +11,31 @@ def factorial(numStr):
         r = 'Error!'
     return r
 
+
+# 10진수를 2진수로 변화하는 함수 구현
 def decToBin(numStr):
     try:
         n = int(numStr)
         # bin 함수는 입력받은 integer 값을 2진수로 변환하여 출력한다.
         # oct(), hex() 가 있다.
-        r = bin(n)[2:]
+        r = format(n, "b")
     except:
         r = 'Error!'
     return r
 
+
+# 2진수를 10진수로 변환하는 함수 구현
 def binToDec(numStr):
     try:
         # int("다른 진수", 2)는 다른 진수의 값을 2진수로 바꾸는 것이다. 여기에 인자 값으로 2, 8, 16이 온다
-        n = int(numStr, 2)
+        n = int("0b" + str(numStr), 2)
         r = str(n)
     except:
         r = 'Error!'
     return r
 
+
+# 10진수를 로마표기법으로 변경하는 함수 구현
 def decToRoman(numStr):
     try:
         n = int(numStr)
@@ -45,6 +53,8 @@ def decToRoman(numStr):
 
     return r
 
+
+# 로마표기법을 10진수로 변경하는 함수 구현
 def romanToDec(numStr):
     try:
         r = 0

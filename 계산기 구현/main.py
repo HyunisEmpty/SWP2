@@ -4,8 +4,8 @@ from PyQt5.QtWidgets import QLineEdit, QToolButton
 from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QLayout, QGridLayout
 
-from keypad import numPadList, operatorList, constantList, functionList,constants,functions
-
+from keypad import numPadList, operatorList, constantList, functionList, constantMap, functionMap
+import calcFunctions
 
 class Button(QToolButton):
 
@@ -102,21 +102,13 @@ class Calculator(QWidget):
 
         #  만약 key 값이 constantList 들어가 있다면 키 값에 해당하는 값을 불러온다.
         elif key in constantList:
-            for count in range(4):
-                # constant 에 대응하는 값을 출력한다.
-                if constantList[count] == key:
-                    self.display.setText(self.display.text() + constants[count])
+            self.display.setText(self.display.text() + constantMap[constantList.index(key)])
 
         # 만약 key 값이 functionList 들어가 있다면 키 값에 해당하는 값을 불러온다.
         elif key in functionList:
-            # 창에있는 값을 num 에 저장한다.
-            for count in range(4):
-                if functionList[count] == key:
-                    # 현재 display 에 있는 텍스트를 받아온다.
-                    num = self.display.text()
-                    # 함수에 해당하는 값을 eval연산을 통해서 처리하고 이 결과값을 출력한다.
-                    result = eval("calcFunctions." + functions[count]+"(" + num + ")")
-                    self.display.setText(str(result))
+            num = self.display.text()
+            func = eval("calcFunctions." + functionMap[functionList.index(key)][1])
+            self.display.setText(str(func(num)))
 
         else:
             self.display.setText(self.display.text() + key)

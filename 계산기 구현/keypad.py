@@ -12,30 +12,26 @@ operatorList = [
     'C',
 ]
 
-constantList = [
-    'pi',
-    '빛의 이동 속도 (m/s)',
-    '소리의 이동 속도 (m/s)',
-    '태양과의 평균 거리 (km)',
+constantMap = [
+    ('pi', '3.141592'),
+    ('빛의 이동 속도 (m/s)', '3E+8'),
+    ('소리의 이동 속도 (m/s)','340'),
+    ('태양과의 평균 거리 (km)','1.5E+8'),
 ]
-# constantList 에 있는 문자에 대응하는 값을 저장한다.
-constants = [
-    '3.141592',
-    '3E+8',
-    '340',
-    '1.5E+8',
-]
+constantList = [x[0] for x in constantMap]
 
-functionList = [
-    'factorial (!)',
-    '-> binary',
-    'binary -> dec',
-    '-> roman',
+functionMap = [
+    ('factorial (!)', 'factorial'),
+    ('-> binary', 'decToBin'),
+    ('binary -> dec', 'binToDec'),
+    ('-> roman', 'decToRoman'),
+    ('roman -> dec', 'romanToDec'),
 ]
-# functionList 에 있는 문자에 대응하는 함수를 저장한다.
-functions = [
-    'factorial',
-    'decToBin',
-    'binToDec',
-    'decToRoman',
+functionList = [x[0] for x in functionMap]
+
+romans = [
+    (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+    (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+    (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'),
+    (1, 'I')
 ]
