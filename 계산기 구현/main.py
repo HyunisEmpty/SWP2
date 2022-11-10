@@ -102,7 +102,7 @@ class Calculator(QWidget):
 
         #  만약 key 값이 constantList 들어가 있다면 키 값에 해당하는 값을 불러온다.
         elif key in constantList:
-            self.display.setText(self.display.text() + constantMap[constantList.index(key)])
+            self.display.setText(self.display.text() + constantMap[constantList.index(key)][1])
 
         # 만약 key 값이 functionList 들어가 있다면 키 값에 해당하는 값을 불러온다.
         elif key in functionList:
