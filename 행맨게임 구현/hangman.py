@@ -96,10 +96,13 @@ class Hangman:
 
     ]
 
-    # 게임 시작시 처음 가지고 있는 목숨을 출력하는 함수
-    def getLife(self):
-        return len(self.text)-1
+    # 생성자
+    def __init__(self):
+        self.remainingLives = len(self.text) - 1;
 
-    # 현재 hangman 상태를 출력하는 함수
-    def get(self, life):
-        return self.text[life]
+    # self.remainingLives 값을 1 감소시키는 함수
+    def decreaseLife(self):
+        self.remainingLives -= 1
+
+    def currentShape(self):
+        return self.text[self.remainingLives]
