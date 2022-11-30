@@ -14,6 +14,9 @@ def gameMain():
     game.showGame(food, day, "first_start")
     sys.exit(app.exec_())
 
+def Yes():
+    return True
+
 
 if __name__ == '__main__':
     gameMain()

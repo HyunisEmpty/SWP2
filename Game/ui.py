@@ -5,6 +5,9 @@ from PyQt5.QtWidgets import (QWidget, QPushButton,
     QComboBox, QTextEdit, QLineEdit)
 from PyQt5.QtCore import Qt
 
+from main import (gameMain)
+
+
 class Game(QWidget):
 
     def __init__(self):
@@ -28,14 +31,14 @@ class Game(QWidget):
 
         button_Add.clicked.connect(lambda: self.doScoreDb(line_Name.text()))
 
-        # 새번째 QHBoxLayout, 각 버튼들이 있는 줄이다.
+        # 사용자로부터 입력받는 라벨, 라인, 버튼을 하나의 horizontal로 정의한다.
         horizontal_box3 = QHBoxLayout()
-
         horizontal_box3.addStretch(0)
         horizontal_box3.addWidget(label_Name)
         horizontal_box3.addWidget(line_Name)
         horizontal_box3.addWidget(button_Add)
 
+        # 현재까지 horizontal로 정리 한 UI를 최종적으로 vertical로 정의하여 화면에 출력
         vertical_box = QVBoxLayout()
         vertical_box.addWidget(self.txtResult)
         vertical_box.addLayout(horizontal_box3)
@@ -55,13 +58,11 @@ class Game(QWidget):
 앞으로의 선택을 통해 최대한 오래동안 생존하세요.
 yes를 입력해서 게임을 시작해주세요"""
             self.txtResult.append(resultText)
-            if self.text_case == "yes":
-                self.txtResult.append("올바른 입력확인")
-            else:
-                self.txtResult.append("다시 입력 해주세요")
 
     def doScoreDb(self, text):
         self.text_case = text
+        self.txtResult.append(self.text_case + "를 입력했습니다.")
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
