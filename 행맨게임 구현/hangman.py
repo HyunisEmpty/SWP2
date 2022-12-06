@@ -98,7 +98,10 @@ class Hangman:
 
     # 생성자
     def __init__(self):
-        self.remainingLives = len(self.text) - 1;
+        self.remainingLives = len(self.text) - 1
+
+    def getRemainingLives(self):
+        return self.remainingLives
 
     # self.remainingLives 값을 1 감소시키는 함수
     def decreaseLife(self):
